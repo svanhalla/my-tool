@@ -4,12 +4,13 @@ before:
   hooks:
     - go mod tidy
 builds:
-  - env:
-      - CGO_ENABLED=0
+  - main: ./cmd/cli
+    id: my-tool
+    binary: my-tool
     goos:
       - linux
-      - windows
       - darwin
+      - windows
 
 archives:
   - format: tar.gz
@@ -37,7 +38,7 @@ changelog:
       - '^test:'
 
 brews:
-  - name: my-tool
+  - name: my-tool-brew
     homepage: https://github.com/svanhalla/homebrew-tools
     tap:
       owner: svanhalla
